@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anatomi Website dengan Grid</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            margin: 0; /* Menghilangkan margin default */
+            font-family: Arial, sans-serif; /* Menetapkan font */
+        }
+
+        .grid-container {
+            display: grid; /* Mengaktifkan grid */
+            grid-template-columns: 200px 1fr; /* Sidebar 200px dan konten 1fr */
+            grid-template-rows: auto 1fr auto; /* Header, konten, dan footer */
+            grid-template-areas:
+                "header header"
+                "sidebar content"
+                "footer footer"; /* Menentukan area grid */
+            height: 100vh; /* Mengatur tinggi container menjadi 100% viewport */
+        }
+
+        .header {
+            grid-area: header; /* Menetapkan area grid */
+            background-color: #4caf50; /* Warna latar belakang header */
+            color: white; /* Warna teks */
+            padding: 20px;
+            text-align: center; /* Rata tengah teks */
+        }
+
+        .sidebar {
+            grid-area: sidebar; /* Menetapkan area grid */
+            background-color: #2196f3; /* Warna latar belakang sidebar */
+            color: white; /* Warna teks */
+            padding: 20px;
+        }
+
+        .content {
+            grid-area: content; /* Menetapkan area grid */
+            background-color: #ffeb3b; /* Warna latar belakang konten utama */
+            color: black; /* Warna teks */
+            padding: 20px;
+        }
+
+        .footer {
+            grid-area: footer; /* Menetapkan area grid */
+            background-color: #f44336; /* Warna latar belakang footer */
+            color: white; /* Warna teks */
+            padding: 20px;
+            text-align: center; /* Rata tengah teks */
+        }
+
+        /* Media Query untuk Responsivitas */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr; /* Mengubah menjadi satu kolom */
+                grid-template-areas:
+                    "header"
+                    "content"
+                    "sidebar"
+                    "footer"; /* Mengatur ulang area grid */
+            }
+
+            .sidebar {
+                padding: 10px; /* Mengurangi padding sidebar untuk tampilan mobile */
+                font-size: 0.9em; /* Mengurangi ukuran font untuk sidebar */
+                background-color: #2196f3; /* Warna latar belakang sidebar */
+            }
+
+            .content {
+                padding: 20px; /* Padding konten utama tetap */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <header class="header">Header</header>
+        <nav class="sidebar">Sidebar</nav>
+        <main class="content">Konten Utama</main>
+        <footer class="footer">Footer</footer>
+    </div>
+</body>
+</html>

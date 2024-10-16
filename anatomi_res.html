@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anatomi Website dengan Grid dan Sidebar Tertutup</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+    margin: 0; /* Menghilangkan margin default */
+    font-family: Arial, sans-serif; /* Menetapkan font */
+}
+
+.grid-container {
+    display: grid; /* Mengaktifkan grid */
+    grid-template-columns: 200px 1fr; /* Sidebar 200px dan konten 1fr */
+    grid-template-rows: auto 1fr auto; /* Header, konten, dan footer */
+    grid-template-areas: 
+        "header header"
+        "sidebar content"
+        "footer footer"; /* Menentukan area grid */
+    height: 100vh; /* Mengatur tinggi container menjadi 100% viewport */
+    transition: margin-left 0.3s; /* Transisi saat menggeser konten */
+}
+
+.header {
+    grid-area: header; /* Menetapkan area grid */
+    background-color: #4CAF50; /* Warna latar belakang header */
+    color: white; /* Warna teks */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Menyebar konten */
+    align-items: center; /* Mengatur vertikal di tengah */
+}
+
+.sidebar {
+    grid-area: sidebar; /* Menetapkan area grid */
+    background-color: #2196F3; /* Warna latar belakang sidebar */
+    color: white; /* Warna teks */
+    padding: 20px;
+    transition: transform 0.3s ease; /* Animasi saat membuka/menutup */
+    transform: translateX(-100%); /* Menutup sidebar dengan menggeser ke kiri */
+    height: calc(100vh - 60px); /* Mengatur tinggi sidebar */
+    position: fixed; /* Menempatkan sidebar di posisi tetap */
+    z-index: 1; /* Menempatkan sidebar di atas konten */
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Menampilkan sidebar */
+}
+
+.content {
+    grid-area: content; /* Menetapkan area grid */
+    background-color: #FFEB3B; /* Warna latar belakang konten utama */
+    color: black; /* Warna teks */
+    padding: 20px;
+    transition: margin-left 0.3s; /* Transisi saat konten geser */
+}
+
+.footer {
+    grid-area: footer; /* Menetapkan area grid */
+    background-color: #f44336; /* Warna latar belakang footer */
+    color: white; /* Warna teks */
+    padding: 20px;
+    text-align: center; /* Rata tengah teks */
+}
+
+/* Media Query untuk Responsivitas */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Mengubah menjadi satu kolom */
+        grid-template-areas:
+            "header"
+            "content"
+            "footer"; /* Mengatur ulang area grid */
+    }
+
+    .sidebar {
+        position: fixed; /* Menempatkan sidebar di posisi tetap */
+        z-index: 1; /* Menempatkan sidebar di atas konten */
+    }
+
+    .content {
+        margin-left: 0; /* Menghapus margin untuk konten utama */
+    }
+
+    .grid-container.open .content {
+        margin-left: 200px; /* Memberikan ruang saat sidebar dibuka */
+    }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="header">
+        <button id="toggleSidebar" class="toggle-button">☰</button>
+        Header
+      </header>
+      <nav class="sidebar" id="sidebar">Sidebar</nav>
+      <main class="content">Konten Utama</main>
+      <footer class="footer">Footer</footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    // script.js
+document.getElementById("toggleSidebar").addEventListener("click", function() {
+    const sidebar = document.getElementById("sidebar");
+    const gridContainer = document.querySelector(".grid-container");
+    sidebar.classList.toggle("open"); // Menambahkan atau menghapus kelas "open"
+    gridContainer.classList.toggle("open"); // Menambahkan atau menghapus kelas "open" di grid-container
+});
+    </script>
+  </body>
+</html>

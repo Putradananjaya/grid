@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praktikum JavaScript - Bagian 1</title>
+  </head>
+  <body>
+    <h2>Formulir Pendaftaran</h2>
+    <form id="form1">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" />
+      <button type="button" onclick="tampilkanPesan()">Submit</button>
+    </form>
+
+    <h2>Hitung Usia Anda</h2>
+    <label for="tahunLahir">Tahun Lahir:</label>
+    <input type="number" id="tahunLahir" />
+    <button type="button" onclick="hitungUsia()">Hitung</button>
+    <p id="hasil"></p>
+
+    <h2>Manipulasi DOM</h2>
+    <p id="paragraf">Ini adalah paragraf yang akan diubah.</p>
+    <button onclick="ubahTeks()">Ubah Teks</button>
+    <button onclick="ubahWarna()">Ubah Warna</button>
+
+    <h2>Event Handling</h2>
+    <img
+      id="gambar"
+      src="https://images.unsplash.com/photo-1720048171731-15b3d9d5473f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      width="200"
+      onclick="gantiGambar()"
+    />
+
+    <h2>Kalkulator Sederhana</h2>
+    <input type="number" id="angka1" placeholder="Angka 1" />
+    <input type="number" id="angka2" placeholder="Angka 2" />
+    <select id="operator">
+      <option value="+">Tambah</option>
+      <option value="-">Kurang</option>
+      <option value="*">Kali</option>
+      <option value="/">Bagi</option>
+    </select>
+    <button onclick="hitung()">Hitung</button>
+    <p id="hasilKalkulator"></p>
+
+    <script>
+      function tampilkanPesan() {
+        var nama = document.getElementById("nama").value;
+        alert("Hello, " + nama + "!");
+      }
+
+      function hitungUsia() {
+        var tahunLahir = document.getElementById("tahunLahir").value;
+        var tahunSekarang = new Date().getFullYear();
+        var usia = tahunSekarang - tahunLahir;
+        document.getElementById("hasil").innerText =
+          "Umur Anda adalah " + usia + " tahun.";
+      }
+
+      function ubahTeks() {
+        document.getElementById("paragraf").innerText =
+          "Teks ini sudah diubah!";
+      }
+
+      function ubahWarna() {
+        document.getElementById("paragraf").style.color = "blue";
+      }
+
+      function gantiGambar() {
+        var img = document.getElementById("gambar");
+        if (
+          img.src.includes(
+            "https://images.unsplash.com/photo-1720048171731-15b3d9d5473f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          )
+        ) {
+          img.src =
+            "https://images.unsplash.com/photo-1610415303700-57672a942f7e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+        } else {
+          img.src =
+            "https://images.unsplash.com/photo-1720048171731-15b3d9d5473f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+        }
+      }
+
+      function hitung() {
+        var angka1 = parseFloat(document.getElementById("angka1").value);
+        var angka2 = parseFloat(document.getElementById("angka2").value);
+        var operator = document.getElementById("operator").value;
+        var hasil;
+
+        switch (operator) {
+          case "+":
+            hasil = angka1 + angka2;
+            break;
+          case "-":
+            hasil = angka1 - angka2;
+            break;
+          case "*":
+            hasil = angka1 * angka2;
+            break;
+          case "/":
+            hasil = angka1 / angka2;
+            break;
+        }
+
+        document.getElementById("hasilKalkulator").innerText =
+          "Hasil: " + hasil;
+      }
+    </script>
+  </body>
+</html>
+

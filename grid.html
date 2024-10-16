@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .flex-container {
+        display: flex; /* Mengaktifkan flexbox */
+        justify-content: space-around; /* Spasi merata di antara item */
+        align-items: center; /* Mengatur item secara vertikal di tengah */
+        height: 100px;
+        background-color: #f0f0f0;
+      }
+
+      .flex-item {
+        background-color: #4caf50; /* Warna latar belakang item */
+        color: white; /* Warna teks */
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+    </style>
+
+    <style>
+      .grid-container {
+        display: grid; /* Mengaktifkan grid */
+        grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom yang sama */
+        gap: 10px; /* Jarak antara item */
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+
+      .grid-item {
+        background-color: #4caf50; /* Warna latar belakang item */
+        color: white; /* Warna teks */
+        padding: 20px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div class="grid-container">
+      <div class="grid-item">Item 1</div>
+      <div class="grid-item">Item 2</div>
+      <div class="grid-item">Item 3</div>
+      <div class="grid-item">Item 4</div>
+      <div class="grid-item">Item 1</div>
+      <div class="grid-item">Item 2</div>
+      <div class="grid-item">Item 3</div>
+      <div class="grid-item">Item 4</div>
+    </div>
+  </body>
+</html>
